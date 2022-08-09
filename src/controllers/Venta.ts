@@ -24,6 +24,7 @@ const readVenta = (req: Request, res: Response, next: NextFunction) => {
 
   return Venta.findById(ventaId)
     .populate('client', 'name -_id')
+    .populate('products', 'name -_id')
     .select('-__v')
     .then((venta) =>
       venta
